@@ -1,0 +1,20 @@
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction && npm install && npm run build:vue && php artisan optimize",
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"
+  },
+  "deploy": {
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=${PORT:-8080}",
+    "healthcheckPath": "/api/v1/health",
+    "healthcheckTimeout": 100,
+    "restartPolicy": "always"
+  },
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "CACHE_DRIVER": "redis",
+    "SESSION_DRIVER": "database",
+    "QUEUE_CONNECTION": "database"
+  }
+}

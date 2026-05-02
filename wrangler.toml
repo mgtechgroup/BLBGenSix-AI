@@ -1,12 +1,6 @@
-# Cloudflare Pages - BLBGenSix AI Static Frontend
-# This config deploys the static landing page + Vue/React frontend to Cloudflare Pages
-# The Laravel API backend should be deployed to a separate server (Railway, Render, VPS)
+name = "blbgensixai"
+pages_build_output_dir = "public"
+compatibility_date = "2026-05-02"
 
-build:
-  command: npm install && npm run build
-  output: public
-  environment:
-    NODE_VERSION: 20
-
-# For full-stack deployment (Laravel + frontend), use a VPS or Railway instead
-# Cloudflare Pages is best for the static frontend only
+[vars]
+APP_ENV = "production"
