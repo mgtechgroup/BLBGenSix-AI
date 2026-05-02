@@ -1,0 +1,11 @@
+{
+    "name": "AdMonetization",
+    "alias": "ad-monetization",
+    "description": "Ad Space Monetization & Campaign Module",
+    "keywords": ["ads", "monetization", "campaigns", "revenue"],
+    "priority": 23,
+    "providers": [
+        "Modules\\AdMonetization\\AdMonetizationServiceProvider"
+    ],
+    "files": []
+}

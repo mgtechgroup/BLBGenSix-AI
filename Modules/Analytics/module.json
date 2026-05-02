@@ -1,0 +1,11 @@
+{
+    "name": "Analytics",
+    "alias": "analytics",
+    "description": "Revenue & Usage Analytics Module",
+    "keywords": ["analytics", "revenue", "reporting"],
+    "priority": 30,
+    "providers": [
+        "Modules\\Analytics\\AnalyticsServiceProvider"
+    ],
+    "files": []
+}

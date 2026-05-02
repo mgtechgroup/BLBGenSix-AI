@@ -1,0 +1,11 @@
+{
+    "name": "Payments",
+    "alias": "payments",
+    "description": "Multi-Payment Gateway Module (Crypto Cold Wallet + Fiat)",
+    "keywords": ["payments", "crypto", "stripe", "paypal", "cold-wallet"],
+    "priority": 22,
+    "providers": [
+        "Modules\\Payments\\PaymentsServiceProvider"
+    ],
+    "files": []
+}

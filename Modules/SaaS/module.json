@@ -1,0 +1,11 @@
+{
+    "name": "SaaS",
+    "alias": "saas",
+    "description": "SaaS Billing & Subscription Module (Stripe)",
+    "keywords": ["saas", "billing", "stripe", "subscription"],
+    "priority": 20,
+    "providers": [
+        "Modules\\SaaS\\SaaSServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,83 @@
+# Brilliantly Bussy ImagGoo - Configuration
+app:
+  name: "Brilliantly Bussy ImagGoo"
+  version: "1.0.0"
+  description: "NSFW Uncensored Generative AI Platform"
+  
+generation:
+  image:
+    default_model: "stable-diffusion-xl-nsfw"
+    default_width: 1024
+    default_height: 1024
+    default_steps: 30
+    default_cfg_scale: 7.5
+    default_sampler: "DPM++ 2M Karras"
+    styles:
+      - "anime"
+      - "realistic"
+      - "semi-realistic"
+      - "artistic"
+      - "cartoon"
+      
+  video:
+    default_model: "modelscope-text-to-video"
+    default_duration: 30
+    default_fps: 24
+    default_resolution: "1080p"
+    max_duration: 300
+    
+  text:
+    default_model: "gpt-4-uncensored"
+    max_tokens: 100000
+    temperature: 0.9
+    styles:
+      - "erotica"
+      - "romance"
+      - "fantasy"
+      - "sci-fi"
+      - "anime"
+      
+  body_mapping:
+    default_model: "smplx-detailed"
+    resolution: "4K"
+    detail_level: "maximum"
+    mapping_types:
+      - "full_body"
+      - "face_only"
+      - "torso_only"
+      - "custom_region"
+
+income:
+  platforms:
+    onlyfans:
+      enabled: true
+      auto_post: true
+      subscription_tiers:
+        - name: "Basic"
+          price: 9.99
+        - name: "Premium"
+          price: 24.99
+        - name: "VIP"
+          price: 49.99
+    fansly:
+      enabled: true
+      auto_post: true
+    manyvids:
+      enabled: true
+      auto_post: true
+    custom_store:
+      enabled: true
+      stripe_integration: true
+      
+  automation:
+    content_schedule:
+      posts_per_day: 3
+      peak_hours: [9, 12, 18, 21]
+    pricing_optimization: true
+    analytics_tracking: true
+    
+server:
+  host: "0.0.0.0"
+  port: 7860
+  workers: 4
+  cors_origins: ["*"]

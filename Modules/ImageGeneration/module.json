@@ -1,0 +1,11 @@
+{
+    "name": "ImageGeneration",
+    "alias": "image-generation",
+    "description": "AI Image Generation Module (SDXL)",
+    "keywords": ["image", "generation", "sdxl", "ai"],
+    "priority": 10,
+    "providers": [
+        "Modules\\ImageGeneration\\ImageGenerationServiceProvider"
+    ],
+    "files": []
+}

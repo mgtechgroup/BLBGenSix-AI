@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #8B5CF6;
+        --color-primary-dark: #7C3AED;
+        --color-secondary: #EC4899;
+        --color-bg: #0F0F0F;
+        --color-surface: #1A1A1A;
+        --color-surface-elevated: #242424;
+        --color-border: #333333;
+        --color-text: #F5F5F5;
+        --color-text-muted: #A0A0A0;
+        --color-success: #10B981;
+        --color-warning: #F59E0B;
+        --color-error: #EF4444;
+    }
+
+    body {
+        @apply bg-[#0F0F0F] text-gray-100 antialiased;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl transition-all duration-200 focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+    }
+
+    .btn-secondary {
+        @apply px-6 py-3 bg-pink-600 hover:bg-piolet-700 text-white font-semibold rounded-xl transition-all duration-200;
+    }
+
+    .card {
+        @apply bg-[#1A1A1A] border border-[#333] rounded-2xl p-6 shadow-xl;
+    }
+
+    .input-dark {
+        @apply w-full px-4 py-3 bg-[#242424] border border-[#333] rounded-xl text-white placeholder-gray-500 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-all;
+    }
+
+    .gradient-text {
+        @apply bg-gradient-to-r from-violet-400 via-pink-500 to-orange-400 bg-clip-text text-transparent;
+    }
+
+    .glow-violet {
+        @apply shadow-[0_0_30px_rgba(139,92,246,0.3)];
+    }
+
+    .glow-pink {
+        @apply shadow-[0_0_30px_rgba(236,72,153,0.3)];
+    }
+}

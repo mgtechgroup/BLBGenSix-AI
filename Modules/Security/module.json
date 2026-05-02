@@ -1,0 +1,11 @@
+{
+    "name": "Security",
+    "alias": "security",
+    "description": "Zero-Trust Security Module",
+    "keywords": ["security", "zero-trust", "device-fingerprint"],
+    "priority": 2,
+    "providers": [
+        "Modules\\Security\\SecurityServiceProvider"
+    ],
+    "files": []
+}

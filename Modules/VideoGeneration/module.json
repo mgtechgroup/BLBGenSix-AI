@@ -1,0 +1,11 @@
+{
+    "name": "VideoGeneration",
+    "alias": "video-generation",
+    "description": "AI Video Generation Module",
+    "keywords": ["video", "generation", "modelscope", "ai"],
+    "priority": 11,
+    "providers": [
+        "Modules\\VideoGeneration\\VideoGenerationServiceProvider"
+    ],
+    "files": []
+}

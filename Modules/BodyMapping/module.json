@@ -1,0 +1,11 @@
+{
+    "name": "BodyMapping",
+    "alias": "body-mapping",
+    "description": "3D Body Mapping & Reconstruction Module (SMPL-X)",
+    "keywords": ["body", "3d", "smplx", "mapping"],
+    "priority": 13,
+    "providers": [
+        "Modules\\BodyMapping\\BodyMappingServiceProvider"
+    ],
+    "files": []
+}

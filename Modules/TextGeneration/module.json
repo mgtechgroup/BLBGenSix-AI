@@ -1,0 +1,11 @@
+{
+    "name": "TextGeneration",
+    "alias": "text-generation",
+    "description": "AI Text/Novel/Storyboard Generation Module",
+    "keywords": ["text", "novel", "storyboard", "gpt4"],
+    "priority": 12,
+    "providers": [
+        "Modules\\TextGeneration\\TextGenerationServiceProvider"
+    ],
+    "files": []
+}

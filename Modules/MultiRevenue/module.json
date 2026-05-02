@@ -1,0 +1,11 @@
+{
+    "name": "MultiRevenue",
+    "alias": "multi-revenue",
+    "description": "Multi-Stream Revenue Module (Tips, PPV, Bundles, Affiliate, NFTs)",
+    "keywords": ["revenue", "tips", "ppv", "affiliate", "nft", "bundles"],
+    "priority": 24,
+    "providers": [
+        "Modules\\MultiRevenue\\MultiRevenueServiceProvider"
+    ],
+    "files": []
+}

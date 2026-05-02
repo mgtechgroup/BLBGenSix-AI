@@ -1,0 +1,11 @@
+{
+    "name": "Auth",
+    "alias": "auth",
+    "description": "Biometric/Passkey Authentication Module",
+    "keywords": ["auth", "webauthn", "passkey", "biometric"],
+    "priority": 1,
+    "providers": [
+        "Modules\\Auth\\AuthServiceProvider"
+    ],
+    "files": []
+}

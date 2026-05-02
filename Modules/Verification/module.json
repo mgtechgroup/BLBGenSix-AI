@@ -1,0 +1,11 @@
+{
+    "name": "Verification",
+    "alias": "verification",
+    "description": "Adult Verification Module",
+    "keywords": ["verification", "adult", "id-check", "liveness"],
+    "priority": 3,
+    "providers": [
+        "Modules\\Verification\\VerificationServiceProvider"
+    ],
+    "files": []
+}

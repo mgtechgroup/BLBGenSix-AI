@@ -1,0 +1,11 @@
+{
+    "name": "IncomeAutomation",
+    "alias": "income-automation",
+    "description": "Multi-Platform Income Stream Automation Module",
+    "keywords": ["income", "automation", "onlyfans", "fansly", "revenue"],
+    "priority": 21,
+    "providers": [
+        "Modules\\IncomeAutomation\\IncomeAutomationServiceProvider"
+    ],
+    "files": []
+}
