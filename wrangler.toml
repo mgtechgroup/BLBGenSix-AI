@@ -1,14 +1,12 @@
-{
-    "version": 2,
-    "buildCommand": "composer install --no-dev --optimize-autoloader && npm install && npm run build",
-    "outputDirectory": "public",
-    "installCommand": "composer install --no-dev --optimize-autoloader",
-    "environment": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "LOG_CHANNEL": "stderr",
-        "CACHE_DRIVER": "redis",
-        "SESSION_DRIVER": "database",
-        "QUEUE_CONNECTION": "redis"
-    }
-}
+# Cloudflare Pages - BLBGenSix AI Static Frontend
+# This config deploys the static landing page + Vue/React frontend to Cloudflare Pages
+# The Laravel API backend should be deployed to a separate server (Railway, Render, VPS)
+
+build:
+  command: npm install && npm run build
+  output: public
+  environment:
+    NODE_VERSION: 20
+
+# For full-stack deployment (Laravel + frontend), use a VPS or Railway instead
+# Cloudflare Pages is best for the static frontend only
