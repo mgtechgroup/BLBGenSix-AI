@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLBGenSix AI — Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;}.sidebar-link.active{background:linear-gradient(135deg,#8B5CF6,#6D28D9);color:white;}</style>
+</head>
+<body class="bg-[#0a0a12] text-gray-100 flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-[#111118] border-r border-[#222] flex flex-col fixed h-full">
+        <div class="p-6 border-b border-[#222]">
+            <h1 class="text-xl font-black"><span class="bg-gradient-to-r from-violet-400 to-pink-500 bg-clip-text text-transparent">BLBGenSix AI</span></h1>
+            <p class="text-xs text-gray-500 mt-1">Admin Dashboard</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <div class="text-xs text-gray-600 uppercase tracking-wider px-3 py-2">Main</div>
+            <a href="#dashboard" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition" onclick="switchSection('dashboard',this)">📊 Overview</a>
+            <a href="#users" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('users',this)">👥 Users</a>
+            <a href="#generations" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('generations',this)">🎨 Generations</a>
+            <a href="#revenue" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('revenue',this)">💰 Revenue</a>
+            <div class="text-xs text-gray-600 uppercase tracking-wider px-3 py-2 mt-4">Management</div>
+            <a href="#scrapers" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('scrapers',this)">🔍 Scrapers</a>
+            <a href="#plugins" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('plugins',this)">🧩 Plugins</a>
+            <a href="#features" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('features',this)">🚩 Features</a>
+            <a href="#settings" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('settings',this)">⚙️ Settings</a>
+        </nav>
+        <div class="p-4 border-t border-[#222] text-xs text-gray-600">v1.0.0 • Server: 45.32.134.145</div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 p-8">
+        <!-- Dashboard -->
+        <section id="section-dashboard">
+            <h2 class="text-3xl font-bold mb-8">Dashboard Overview</h2>
+            <div class="grid grid-cols-4 gap-6 mb-8" id="stats-cards"></div>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Revenue (30 days)</h3><div class="h-64 flex items-center justify-center text-gray-600">📈 Revenue chart loads via API</div></div>
+                <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Generations (24h)</h3><div class="h-64 flex items-center justify-center text-gray-600">📊 Chart loads via API</div></div>
+            </div>
+        </section>
+
+        <!-- Users -->
+        <section id="section-users" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">User Management</h2>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl overflow-hidden"><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-[#1a1a22]"><tr><th class="px-6 py-3 text-left">User</th><th class="px-6 py-3 text-left">Plan</th><th class="px-6 py-3 text-left">Verified</th><th class="px-6 py-3 text-left">Actions</th></tr></thead><tbody id="users-table"><tr><td colspan="4" class="px-6 py-4 text-gray-500">Loading via API...</td></tr></tbody></table></div></div>
+        </section>
+
+        <!-- Revenue -->
+        <section id="section-revenue" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">Revenue Management</h2>
+            <div class="grid grid-cols-3 gap-6 mb-8" id="revenue-cards"></div>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Transactions</h3><div id="revenue-table" class="text-gray-500">Loading via API...</div></div>
+        </section>
+
+        <!-- Features (Feature Flags) -->
+        <section id="section-features" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">Feature Flags</h2>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6">
+                <p class="text-gray-400 text-sm mb-4">Toggle features on/off without deploying code. Changes take effect immediately.</p>
+                <div id="features-grid" class="grid grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- Scrapers -->
+        <section id="section-scrapers" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">Scraper Management</h2>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><div id="scrapers-status" class="text-gray-500">Loading scraper status via API...</div></div>
+        </section>
+
+        <!-- Plugins -->
+        <section id="section-plugins" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">Plugin Registry</h2>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><div id="plugins-list" class="text-gray-500">Loading 74+ plugins via API...</div></div>
+        </section>
+
+        <!-- Settings -->
+        <section id="section-settings" class="hidden">
+            <h2 class="text-3xl font-bold mb-8">Settings</h2>
+            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><p class="text-gray-500">API keys, integrations, webhooks, SMTP, storage — all configurable.</p></div>
+        </section>
+    </main>
+
+    <script>
+        const API = 'http://localhost:9876/api/v1/manager';
+        const LARAVEL = '/api/v1';
+
+        function switchSection(name, el) {
+            document.querySelectorAll('section[id^="section-"]').forEach(s => s.classList.add('hidden'));
+            document.getElementById('section-'+name).classList.remove('hidden');
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            el.classList.add('active');
+            if (name === 'dashboard') loadDashboard();
+            if (name === 'features') loadFeatures();
+            if (name === 'scrapers') loadScrapers();
+            if (name === 'plugins') loadPlugins();
+        }
+
+        async function loadDashboard() {
+            try {
+                const d = await fetch(API+'/dashboard').then(r=>r.json());
+                document.getElementById('stats-cards').innerHTML = [
+                    {label:'Total Scrapers',value:d.total_scrapers,color:'violet'},
+                    {label:'Gay/Queer',value:d.gay_scrapers,color:'pink'},
+                    {label:'Revenue Streams',value:d.stream_sources?.length||9,color:'green'},
+                    {label:'Torrent Trackers',value:d.torrent_trackers,color:'orange'}
+                ].map(c=>`<div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><p class="text-${c.color}-400 text-3xl font-black">${c.value}</p><p class="text-gray-500 text-sm">${c.label}</p></div>`).join('');
+            } catch(e) { document.getElementById('stats-cards').innerHTML = '<p class="text-red-400">API unavailable — is UniScrape running?</p>'; }
+        }
+
+        async function loadFeatures() {
+            const features = {
+                auth_biometric:{name:'Biometric Auth',cat:'Core'},
+                image_generation:{name:'Image Gen',cat:'Generation'},
+                video_generation:{name:'Video Gen',cat:'Generation'},
+                text_generation:{name:'Text Gen',cat:'Generation'},
+                body_mapping:{name:'Body Mapping',cat:'Generation'},
+                crypto_payments:{name:'Crypto Payments',cat:'Revenue'},
+                affiliate_program:{name:'Affiliate',cat:'Revenue'},
+                ad_monetization:{name:'Ad Space',cat:'Revenue'},
+                nft_minting:{name:'NFT Minting',cat:'Revenue'},
+                dark_mode:{name:'Dark Mode',cat:'UI'},
+                analytics_view:{name:'Analytics',cat:'UI'},
+                dht_search:{name:'DHT Search',cat:'Experimental'},
+                ai_recommendations:{name:'AI Recs',cat:'Experimental'},
+            };
+            document.getElementById('features-grid').innerHTML = Object.entries(features).map(([k,v])=>`
+                <div class="bg-[#1a1a22] border border-[#222] rounded-xl p-4 flex items-center justify-between">
+                    <div><p class="font-semibold">${v.name}</p><p class="text-xs text-gray-500">${v.cat}</p></div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" checked onchange="toggleFeature('${k}',this.checked)">
+                        <div class="w-9 h-5 bg-gray-600 peer-focus:ring-2 peer-focus:ring-violet-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-violet-600"></div>
+                    </label>
+                </div>`).join('');
+        }
+
+        function toggleFeature(name, enabled) {
+            console.log(`Feature ${name} → ${enabled?'ON':'OFF'}`);
+            fetch(`${LARAVEL}/admin/features/${name}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled})}).catch(()=>{});
+        }
+
+        async function loadScrapers() {
+            try {
+                const d = await fetch(API+'/dashboard').then(r=>r.json());
+                document.getElementById('scrapers-status').innerHTML = `
+                    <div class="grid grid-cols-3 gap-4 mb-4">
+                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-violet-400">${d.total_scrapers}</p><p class="text-xs text-gray-500">Total</p></div>
+                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-pink-400">${d.by_type?.scene||0}</p><p class="text-xs text-gray-500">Scene</p></div>
+                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-green-400">${d.by_type?.performer||0}</p><p class="text-xs text-gray-500">Performer</p></div>
+                    </div>
+                    <button onclick="fetch('${API}/reload',{method:'POST'}).then(r=>r.json()).then(d=>alert('Reloaded '+d.count+' scrapers'))" class="px-4 py-2 bg-violet-600 rounded-lg text-sm">Reload All Scrapers</button>
+                `;
+            } catch(e) { document.getElementById('scrapers-status').innerHTML = '<p class="text-red-400">API unavailable</p>'; }
+        }
+
+        async function loadPlugins() {
+            try {
+                const d = await fetch(API+'/plugins').then(r=>r.json());
+                document.getElementById('plugins-list').innerHTML = `
+                    <p class="mb-4">${d.total} plugins registered — official=${d.by_type.official} community=${d.by_type.community} theme=${d.by_type.theme} bridge=${d.by_type.bridge}</p>
+                    <div class="max-h-96 overflow-y-auto space-y-2">${d.plugins.slice(0,20).map(p=>`<div class="flex justify-between items-center p-2 bg-[#1a1a22] rounded-lg text-sm"><span class="truncate">${p.name}</span><span class="text-xs px-2 py-0.5 rounded-full ${p.type==='official'?'bg-violet-600':'bg-gray-600'}">${p.type}</span></div>`).join('')}</div>
+                    <p class="text-xs text-gray-600 mt-2">+${d.total-20} more plugins available</p>
+                `;
+            } catch(e) { document.getElementById('plugins-list').innerHTML = '<p class="text-red-400">API unavailable</p>'; }
+        }
+
+        // Auto-load dashboard
+        loadDashboard();
+    </script>
+</body>
+</html>
