@@ -16,6 +16,7 @@ Route::prefix('api/v1')->middleware(['throttle:api'])->group(function () {
     Route::get('/payment/methods', [\Modules\Payments\Http\Controllers\FiatPaymentController::class, 'methods']);
     Route::get('/ad/spaces', [\Modules\AdMonetization\Http\Controllers\AdMonetizationController::class, 'availableSpaces']);
     Route::get('/revenue/streams', [\Modules\MultiRevenue\Http\Controllers\MultiRevenueController::class, 'revenueStreams']);
+    Route::post('/music/webhook', [\App\Http\Controllers\Api\MusicController::class, 'webhook'])->name('api.music.webhook');
 
     // Authenticated endpoints
     Route::middleware(['auth:sanctum', 'zero.trust', 'device.trusted'])->group(function () {
@@ -56,6 +57,9 @@ Route::prefix('api/v1')->middleware(['throttle:api'])->group(function () {
         // Multi-Revenue Streams
         Route::prefix('revenue')->group(base_path('Modules/MultiRevenue/routes/api.php'));
         
+        // Music Scrobbling
+        Route::prefix('music')->group(base_path('routes/api/music.php'));
+
         // Analytics
         Route::prefix('analytics')->group(base_path('Modules/Analytics/routes/api.php'));
     });

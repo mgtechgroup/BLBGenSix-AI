@@ -41,6 +41,9 @@ class DatabaseSeeder extends Seeder
 
         // Seed crypto networks config
         $this->seedCryptoConfig();
+
+        // Seed sample listening statistics
+        $this->call(ListeningStatSeeder::class);
     }
 
     protected function createRoles(): void

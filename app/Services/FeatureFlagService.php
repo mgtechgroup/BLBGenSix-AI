@@ -41,6 +41,14 @@ class FeatureFlagService
         'dht_search'         => ['default' => false, 'min_plan' => 'enterprise'],
         'ai_recommendations' => ['default' => false, 'min_plan' => 'enterprise'],
         'live_collab'        => ['default' => false, 'min_plan' => 'enterprise'],
+        
+        // Music Features
+        'music_dashboard'    => ['default' => true,  'min_plan' => 'starter'],
+        'music_connect'      => ['default' => true,  'min_plan' => 'starter'],
+        'music_analytics'    => ['default' => true,  'min_plan' => 'pro'],
+        'music_export'       => ['default' => true,  'min_plan' => 'pro'],
+        'music_realtime'     => ['default' => true,  'min_plan' => 'starter'],
+        'music_achievements' => ['default' => true,  'min_plan' => 'free'],
     ];
 
     protected array $planHierarchy = [

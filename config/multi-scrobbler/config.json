@@ -1,0 +1,139 @@
+{
+  "clients": {
+    "spotify": {
+      "enabled": false,
+      "name": "Spotify",
+      "type": "spotify",
+      "auth": {
+        "flow": "pkce",
+        "client_id": "${SPOTIFY_CLIENT_ID}",
+        "client_secret": "${SPOTIFY_CLIENT_SECRET}",
+        "redirect_uri": "http://localhost:9078/auth/spotify/callback",
+        "scopes": ["user-read-currently-playing", "user-read-recently-played", "user-read-playback-state"]
+      },
+      "scrobble": {
+        "source": "spotify",
+        "target": ["lastfm", "listenbrainz"],
+        "poll_interval": 30
+      }
+    },
+    "lastfm": {
+      "enabled": false,
+      "name": "Last.fm",
+      "type": "lastfm",
+      "auth": {
+        "api_key": "${LASTFM_API_KEY}",
+        "api_secret": "${LASTFM_API_SECRET}",
+        "session_key": "${LASTFM_SESSION_KEY}"
+      },
+      "scrobble": {
+        "source": "lastfm",
+        "target": ["listenbrainz"],
+        "poll_interval": 60
+      }
+    },
+    "listenbrainz": {
+      "enabled": false,
+      "name": "ListenBrainz",
+      "type": "listenbrainz",
+      "auth": {
+        "api_token": "${LISTENBRAINZ_API_TOKEN}",
+        "base_url": "https://api.listenbrainz.org"
+      },
+      "scrobble": {
+        "source": "listenbrainz",
+        "target": [],
+        "poll_interval": 60
+      }
+    },
+    "jellyfin": {
+      "enabled": false,
+      "name": "Jellyfin",
+      "type": "jellyfin",
+      "auth": {
+        "base_url": "${JELLYFIN_BASE_URL:-http://stash:9999}",
+        "username": "${JELLYFIN_USERNAME}",
+        "password": "${JELLYFIN_PASSWORD}",
+        "verify_ssl": false
+      },
+      "scrobble": {
+        "source": "jellyfin",
+        "target": ["lastfm", "listenbrainz"],
+        "poll_interval": 15,
+        "webhook": true
+      }
+    },
+    "plex": {
+      "enabled": false,
+      "name": "Plex",
+      "type": "plex",
+      "auth": {
+        "base_url": "${PLEX_BASE_URL}",
+        "token": "${PLEX_TOKEN}",
+        "verify_ssl": true
+      },
+      "scrobble": {
+        "source": "plex",
+        "target": ["lastfm", "listenbrainz"],
+        "poll_interval": 15,
+        "webhook": true
+      }
+    }
+  },
+  "targets": {
+    "lastfm_target": {
+      "enabled": false,
+      "type": "lastfm",
+      "auth": {
+        "api_key": "${LASTFM_API_KEY}",
+        "api_secret": "${LASTFM_API_SECRET}",
+        "session_key": "${LASTFM_SESSION_KEY}"
+      }
+    },
+    "listenbrainz_target": {
+      "enabled": false,
+      "type": "listenbrainz",
+      "auth": {
+        "api_token": "${LISTENBRAINZ_API_TOKEN}",
+        "base_url": "https://api.listenbrainz.org"
+      }
+    }
+  },
+  "server": {
+    "port": 9078,
+    "host": "0.0.0.0",
+    "base_url": "http://localhost:9078",
+    "api_auth": {
+      "enabled": true,
+      "token": "${MULTI_SCROBBLER_API_KEY}"
+    }
+  },
+  "webhooks": {
+    "laravel_playback": {
+      "enabled": true,
+      "url": "${LARAVEL_WEBHOOK_URL:-http://app:80/api/v1/music/webhook}",
+      "events": ["play.scrobble", "play.now", "play.pause", "play.resume", "play.stop"],
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "X-Webhook-Source": "multi-scrobbler",
+        "X-Webhook-Secret": "${LARAVEL_WEBHOOK_SECRET}"
+      },
+      "retry": {
+        "max_attempts": 3,
+        "backoff_multiplier": 2,
+        "initial_delay_ms": 1000
+      }
+    }
+  },
+  "logging": {
+    "level": "${MS_LOG_LEVEL:-info}",
+    "format": "json",
+    "output": "stdout"
+  },
+  "data": {
+    "path": "/etc/multi-scrobbler/data",
+    "backup_interval": 86400,
+    "max_history_days": 90
+  }
+}

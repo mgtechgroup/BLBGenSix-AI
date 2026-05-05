@@ -19,4 +19,11 @@ return [
         'price_enterprise_yearly' => env('STRIPE_PRICE_ENTERPRISE_YEARLY'),
     ],
 
+    'multi_scrobbler' => [
+        'base_url' => env('MULTI_SCROBBLER_URL', 'http://multi-scrobbler:9078'),
+        'api_key' => env('MULTI_SCROBBLER_API_KEY'),
+        'cache_ttl' => env('MULTI_SCROBBLER_CACHE_TTL', 300),
+        'webhook_secret' => env('LARAVEL_WEBHOOK_SECRET'),
+    ],
+
 ];
