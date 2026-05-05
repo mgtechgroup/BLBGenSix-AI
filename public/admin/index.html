@@ -1,172 +1,266 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLBGenSix AI — Admin Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLBGenSix AI - Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>body{font-family:'Inter',sans-serif;}.sidebar-link.active{background:linear-gradient(135deg,#8B5CF6,#6D28D9);color:white;}</style>
+    <link rel="stylesheet" href="assets/admin.css">
 </head>
-<body class="bg-[#0a0a12] text-gray-100 flex min-h-screen">
+<body>
     <!-- Sidebar -->
-    <aside class="w-64 bg-[#111118] border-r border-[#222] flex flex-col fixed h-full">
-        <div class="p-6 border-b border-[#222]">
-            <h1 class="text-xl font-black"><span class="bg-gradient-to-r from-violet-400 to-pink-500 bg-clip-text text-transparent">BLBGenSix AI</span></h1>
-            <p class="text-xs text-gray-500 mt-1">Admin Dashboard</p>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-title">BLBGenSix AI</h1>
+            <p class="sidebar-subtitle">Admin Dashboard</p>
         </div>
-        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-            <div class="text-xs text-gray-600 uppercase tracking-wider px-3 py-2">Main</div>
-            <a href="#dashboard" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition" onclick="switchSection('dashboard',this)">📊 Overview</a>
-            <a href="#users" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('users',this)">👥 Users</a>
-            <a href="#generations" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('generations',this)">🎨 Generations</a>
-            <a href="#revenue" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('revenue',this)">💰 Revenue</a>
-            <div class="text-xs text-gray-600 uppercase tracking-wider px-3 py-2 mt-4">Management</div>
-            <a href="#scrapers" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('scrapers',this)">🔍 Scrapers</a>
-            <a href="#plugins" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('plugins',this)">🧩 Plugins</a>
-            <a href="#features" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('features',this)">🚩 Features</a>
-            <a href="#settings" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white transition" onclick="switchSection('settings',this)">⚙️ Settings</a>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-title">Main</div>
+            <a href="#dashboard" id="nav-dashboard" class="sidebar-link active" onclick="navigateToSection('dashboard')">Overview</a>
+            <a href="#users" id="nav-users" class="sidebar-link" onclick="navigateToSection('users')">Users</a>
+            <a href="#revenue" id="nav-revenue" class="sidebar-link" onclick="navigateToSection('revenue')">Revenue</a>
+            <div class="sidebar-section-title">Management</div>
+            <a href="#scrapers" id="nav-scrapers" class="sidebar-link" onclick="navigateToSection('scrapers')">Scrapers</a>
+            <a href="#plugins" id="nav-plugins" class="sidebar-link" onclick="navigateToSection('plugins')">Plugins</a>
+            <a href="#features" id="nav-features" class="sidebar-link" onclick="navigateToSection('features')">Features</a>
+            <a href="#settings" id="nav-settings" class="sidebar-link" onclick="navigateToSection('settings')">Settings</a>
         </nav>
-        <div class="p-4 border-t border-[#222] text-xs text-gray-600">v1.0.0 • Server: 45.32.134.145</div>
+        <div class="sidebar-footer">v1.0.0 * Server: 45.32.134.145</div>
     </aside>
 
     <!-- Main Content -->
-    <main class="ml-64 flex-1 p-8">
-        <!-- Dashboard -->
+    <main class="main-content">
+        <!-- Dashboard Overview -->
         <section id="section-dashboard">
             <h2 class="text-3xl font-bold mb-8">Dashboard Overview</h2>
-            <div class="grid grid-cols-4 gap-6 mb-8" id="stats-cards"></div>
-            <div class="grid grid-cols-2 gap-6">
-                <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Revenue (30 days)</h3><div class="h-64 flex items-center justify-center text-gray-600">📈 Revenue chart loads via API</div></div>
-                <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Generations (24h)</h3><div class="h-64 flex items-center justify-center text-gray-600">📊 Chart loads via API</div></div>
+            <div class="grid-cols-4 mb-8" id="dashboard-stats"></div>
+            <div class="grid-cols-3 gap-6 mb-8">
+                <div class="chart-container">
+                    <div class="chart-header"><div class="chart-title">API Requests (30d)</div></div>
+                    <div id="dash-chart-1" style="height:150px;"></div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header"><div class="chart-title">Revenue Breakdown</div></div>
+                    <div id="dash-chart-2" style="height:150px;"></div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header"><div class="chart-title">Top Scrapers</div></div>
+                    <div id="dash-chart-3" style="height:150px;"></div>
+                </div>
+            </div>
+            <div class="grid-cols-2 gap-6">
+                <div class="chart-container">
+                    <div class="chart-header"><div class="chart-title">System Health</div></div>
+                    <div id="system-health" style="padding:16px;"></div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header"><div class="chart-title">Recent Activity</div></div>
+                    <div class="log-viewer" id="activity-feed" style="height:200px;"></div>
+                </div>
             </div>
         </section>
 
-        <!-- Users -->
+        <!-- Users Management -->
         <section id="section-users" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">User Management</h2>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl overflow-hidden"><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-[#1a1a22]"><tr><th class="px-6 py-3 text-left">User</th><th class="px-6 py-3 text-left">Plan</th><th class="px-6 py-3 text-left">Verified</th><th class="px-6 py-3 text-left">Actions</th></tr></thead><tbody id="users-table"><tr><td colspan="4" class="px-6 py-4 text-gray-500">Loading via API...</td></tr></tbody></table></div></div>
-        </section>
-
-        <!-- Revenue -->
-        <section id="section-revenue" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">Revenue Management</h2>
-            <div class="grid grid-cols-3 gap-6 mb-8" id="revenue-cards"></div>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><h3 class="font-bold mb-4">Transactions</h3><div id="revenue-table" class="text-gray-500">Loading via API...</div></div>
-        </section>
-
-        <!-- Features (Feature Flags) -->
-        <section id="section-features" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">Feature Flags</h2>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6">
-                <p class="text-gray-400 text-sm mb-4">Toggle features on/off without deploying code. Changes take effect immediately.</p>
-                <div id="features-grid" class="grid grid-cols-2 gap-4"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h2 class="text-3xl font-bold">User Management</h2>
+                <button class="btn btn-primary" onclick="showToast('New user created','success')">+ New User</button>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+                <input class="search-bar" style="flex:1;min-width:250px;" placeholder="Search users by name, email, or ID..." oninput="searchUsers(this.value)">
+                <select class="filter-select" onchange="filterUsersByRole(this.value)">
+                    <option value="all">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                    <option value="api">API</option>
+                </select>
+                <select class="filter-select" onchange="filterUsersByStatus(this.value)">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+            </div>
+            <div id="user-stats" style="margin-bottom:16px;"></div>
+            <div class="bg-secondary border" style="border-radius:16px;overflow:hidden;">
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" onchange="userState.selected=this.checked?userState.filtered.map(function(u){return u.id}):[];renderUserTable();"></th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Requests</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-tbody"></tbody>
+                    </table>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;">
+                    <span id="user-info" style="font-size:12px;color:#666;"></span>
+                    <div class="pagination" id="user-pagination"></div>
+                </div>
             </div>
         </section>
 
-        <!-- Scrapers -->
-        <section id="section-scrapers" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">Scraper Management</h2>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><div id="scrapers-status" class="text-gray-500">Loading scraper status via API...</div></div>
+        <!-- Revenue Dashboard -->
+        <section id="section-revenue" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h2 class="text-3xl font-bold">Revenue Dashboard</h2>
+                <div class="chart-toggle">
+                    <button class="active" id="rev-toggle-monthly" onclick="setRevenuePeriod('monthly')">Monthly</button>
+                    <button id="rev-toggle-yearly" onclick="setRevenuePeriod('yearly')">Yearly</button>
+                </div>
+            </div>
+            <div class="grid-cols-3 mb-8" id="revenue-cards"></div>
+            <div class="chart-container mb-8">
+                <div class="chart-header"><div class="chart-title">Revenue by Stream</div></div>
+                <div id="revenue-chart" style="height:300px;"></div>
+            </div>
+            <div class="bg-secondary border" style="border-radius:16px;overflow:hidden;">
+                <div style="padding:16px;border-bottom:1px solid #222;"><h3 class="font-bold">Revenue Streams Detail</h3></div>
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead><tr><th>Stream</th><th>Monthly</th><th>Yearly</th><th>Est. Profit</th><th>Share</th></tr></thead>
+                        <tbody id="revenue-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
-        <!-- Plugins -->
+        <!-- Scraper Management -->
+        <section id="section-scrapers" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h2 class="text-3xl font-bold">Scraper Management</h2>
+                <div style="display:flex;gap:8px;">
+                    <button class="btn btn-success btn-sm" onclick="bulkEnableScrapers()">Enable All Visible</button>
+                    <button class="btn btn-danger btn-sm" onclick="bulkDisableScrapers()">Disable All Visible</button>
+                </div>
+            </div>
+            <div class="bg-secondary border" style="border-radius:16px;padding:16px;margin-bottom:24px;">
+                <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
+                    <input class="search-bar" style="flex:1;min-width:250px;" placeholder="Search scrapers..." oninput="searchScrapers(this.value)">
+                    <select class="filter-select" onchange="filterScrapers(this.value)">
+                        <option value="all">All Status</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                        <option value="error">Error</option>
+                    </select>
+                </div>
+                <div id="scraper-stats"></div>
+            </div>
+            <div class="scraper-grid mb-6" id="scraper-grid"></div>
+            <div class="pagination" id="scraper-pagination"></div>
+            <div class="bg-secondary border" style="border-radius:16px;padding:16px;margin-top:24px;">
+                <h3 class="font-bold mb-4">Live Logs</h3>
+                <div class="log-viewer" id="scraper-log" style="height:200px;"></div>
+            </div>
+        </section>
+
+        <!-- Plugin Registry -->
         <section id="section-plugins" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">Plugin Registry</h2>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><div id="plugins-list" class="text-gray-500">Loading 74+ plugins via API...</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h2 class="text-3xl font-bold">Plugin Registry</h2>
+                <button class="btn btn-primary" onclick="showToast('Checking for plugin updates...','info')">Check Updates</button>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+                <input class="search-bar" style="flex:1;min-width:250px;" placeholder="Search plugins..." oninput="searchPlugins(this.value)">
+                <select class="filter-select" onchange="filterPlugins(this.value)">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="update">Update Available</option>
+                </select>
+            </div>
+            <div class="plugin-grid" id="plugin-grid"></div>
+            <div class="chart-container mt-8">
+                <div class="chart-header"><div class="chart-title">Top Plugins by Installs</div></div>
+                <div id="plugin-chart" style="height:200px;"></div>
+            </div>
+        </section>
+
+        <!-- Feature Flags -->
+        <section id="section-features" class="hidden">
+            <div style="margin-bottom:20px;">
+                <h2 class="text-3xl font-bold">Feature Flags</h2>
+                <p class="text-muted mt-2" style="font-size:13px;">Toggle features on/off without deploying code. Changes take effect immediately.</p>
+            </div>
+            <div class="bg-secondary border" style="border-radius:16px;overflow:hidden;">
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead><tr><th>Feature</th><th>Status</th><th>Rollout %</th><th>Group</th><th>Actions</th></tr></thead>
+                        <tbody id="feature-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="chart-container mt-8">
+                <div class="chart-header"><div class="chart-title">Feature Distribution</div></div>
+                <div id="feature-chart" style="height:200px;"></div>
+            </div>
         </section>
 
         <!-- Settings -->
         <section id="section-settings" class="hidden">
-            <h2 class="text-3xl font-bold mb-8">Settings</h2>
-            <div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><p class="text-gray-500">API keys, integrations, webhooks, SMTP, storage — all configurable.</p></div>
+            <h2 class="text-3xl font-bold mb-8">System Settings</h2>
+            <div class="grid-cols-2 gap-6" id="settings-content">
+                <div class="bg-secondary border" style="border-radius:16px;padding:24px;">
+                    <h3 class="font-bold mb-4">General Settings</h3>
+                    <div style="display:flex;flex-direction:column;gap:16px;">
+                        <div>
+                            <label style="display:block;margin-bottom:4px;font-size:13px;color:#999;">Site Name</label>
+                            <input type="text" class="search-bar" value="BLBGenSix AI" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="display:block;margin-bottom:4px;font-size:13px;color:#999;">Admin Email</label>
+                            <input type="email" class="search-bar" value="admin@example.com" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                                <input type="checkbox" checked> <span style="font-size:13px;">Maintenance Mode</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-secondary border" style="border-radius:16px;padding:24px;">
+                    <h3 class="font-bold mb-4">Security</h3>
+                    <div style="display:flex;flex-direction:column;gap:16px;">
+                        <div>
+                            <label style="display:block;margin-bottom:4px;font-size:13px;color:#999;">Rate Limit (req/min)</label>
+                            <input type="number" class="search-bar" value="1000" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="display:block;margin-bottom:4px;font-size:13px;color:#999;">Session Timeout (min)</label>
+                            <input type="number" class="search-bar" value="30" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                                <input type="checkbox" checked> <span style="font-size:13px;">Require 2FA</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-secondary border" style="border-radius:16px;padding:24px;">
+                    <h3 class="font-bold mb-4">Audit Log</h3>
+                    <div class="audit-log" id="audit-log" style="height:200px;"></div>
+                </div>
+                <div class="bg-secondary border" style="border-radius:16px;padding:24px;">
+                    <h3 class="font-bold mb-4">Actions</h3>
+                    <div style="display:flex;flex-direction:column;gap:12px;">
+                        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+                        <button class="btn btn-secondary" onclick="showToast('Backup initiated','info')">Backup Database</button>
+                        <button class="btn btn-danger" onclick="showToast('System restart initiated','warning')">Restart System</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <script>
-        const API = 'http://localhost:9876/api/v1/manager';
-        const LARAVEL = '/api/v1';
-
-        function switchSection(name, el) {
-            document.querySelectorAll('section[id^="section-"]').forEach(s => s.classList.add('hidden'));
-            document.getElementById('section-'+name).classList.remove('hidden');
-            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-            el.classList.add('active');
-            if (name === 'dashboard') loadDashboard();
-            if (name === 'features') loadFeatures();
-            if (name === 'scrapers') loadScrapers();
-            if (name === 'plugins') loadPlugins();
-        }
-
-        async function loadDashboard() {
-            try {
-                const d = await fetch(API+'/dashboard').then(r=>r.json());
-                document.getElementById('stats-cards').innerHTML = [
-                    {label:'Total Scrapers',value:d.total_scrapers,color:'violet'},
-                    {label:'Gay/Queer',value:d.gay_scrapers,color:'pink'},
-                    {label:'Revenue Streams',value:d.stream_sources?.length||9,color:'green'},
-                    {label:'Torrent Trackers',value:d.torrent_trackers,color:'orange'}
-                ].map(c=>`<div class="bg-[#111118] border border-[#222] rounded-2xl p-6"><p class="text-${c.color}-400 text-3xl font-black">${c.value}</p><p class="text-gray-500 text-sm">${c.label}</p></div>`).join('');
-            } catch(e) { document.getElementById('stats-cards').innerHTML = '<p class="text-red-400">API unavailable — is UniScrape running?</p>'; }
-        }
-
-        async function loadFeatures() {
-            const features = {
-                auth_biometric:{name:'Biometric Auth',cat:'Core'},
-                image_generation:{name:'Image Gen',cat:'Generation'},
-                video_generation:{name:'Video Gen',cat:'Generation'},
-                text_generation:{name:'Text Gen',cat:'Generation'},
-                body_mapping:{name:'Body Mapping',cat:'Generation'},
-                crypto_payments:{name:'Crypto Payments',cat:'Revenue'},
-                affiliate_program:{name:'Affiliate',cat:'Revenue'},
-                ad_monetization:{name:'Ad Space',cat:'Revenue'},
-                nft_minting:{name:'NFT Minting',cat:'Revenue'},
-                dark_mode:{name:'Dark Mode',cat:'UI'},
-                analytics_view:{name:'Analytics',cat:'UI'},
-                dht_search:{name:'DHT Search',cat:'Experimental'},
-                ai_recommendations:{name:'AI Recs',cat:'Experimental'},
-            };
-            document.getElementById('features-grid').innerHTML = Object.entries(features).map(([k,v])=>`
-                <div class="bg-[#1a1a22] border border-[#222] rounded-xl p-4 flex items-center justify-between">
-                    <div><p class="font-semibold">${v.name}</p><p class="text-xs text-gray-500">${v.cat}</p></div>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" class="sr-only peer" checked onchange="toggleFeature('${k}',this.checked)">
-                        <div class="w-9 h-5 bg-gray-600 peer-focus:ring-2 peer-focus:ring-violet-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-violet-600"></div>
-                    </label>
-                </div>`).join('');
-        }
-
-        function toggleFeature(name, enabled) {
-            console.log(`Feature ${name} → ${enabled?'ON':'OFF'}`);
-            fetch(`${LARAVEL}/admin/features/${name}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled})}).catch(()=>{});
-        }
-
-        async function loadScrapers() {
-            try {
-                const d = await fetch(API+'/dashboard').then(r=>r.json());
-                document.getElementById('scrapers-status').innerHTML = `
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-violet-400">${d.total_scrapers}</p><p class="text-xs text-gray-500">Total</p></div>
-                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-pink-400">${d.by_type?.scene||0}</p><p class="text-xs text-gray-500">Scene</p></div>
-                        <div class="text-center p-4 bg-[#1a1a22] rounded-xl"><p class="text-2xl font-black text-green-400">${d.by_type?.performer||0}</p><p class="text-xs text-gray-500">Performer</p></div>
-                    </div>
-                    <button onclick="fetch('${API}/reload',{method:'POST'}).then(r=>r.json()).then(d=>alert('Reloaded '+d.count+' scrapers'))" class="px-4 py-2 bg-violet-600 rounded-lg text-sm">Reload All Scrapers</button>
-                `;
-            } catch(e) { document.getElementById('scrapers-status').innerHTML = '<p class="text-red-400">API unavailable</p>'; }
-        }
-
-        async function loadPlugins() {
-            try {
-                const d = await fetch(API+'/plugins').then(r=>r.json());
-                document.getElementById('plugins-list').innerHTML = `
-                    <p class="mb-4">${d.total} plugins registered — official=${d.by_type.official} community=${d.by_type.community} theme=${d.by_type.theme} bridge=${d.by_type.bridge}</p>
-                    <div class="max-h-96 overflow-y-auto space-y-2">${d.plugins.slice(0,20).map(p=>`<div class="flex justify-between items-center p-2 bg-[#1a1a22] rounded-lg text-sm"><span class="truncate">${p.name}</span><span class="text-xs px-2 py-0.5 rounded-full ${p.type==='official'?'bg-violet-600':'bg-gray-600'}">${p.type}</span></div>`).join('')}</div>
-                    <p class="text-xs text-gray-600 mt-2">+${d.total-20} more plugins available</p>
-                `;
-            } catch(e) { document.getElementById('plugins-list').innerHTML = '<p class="text-red-400">API unavailable</p>'; }
-        }
-
-        // Auto-load dashboard
-        loadDashboard();
-    </script>
+    <script src="assets/charts.js"></script>
+    <script src="assets/admin.js"></script>
 </body>
 </html>

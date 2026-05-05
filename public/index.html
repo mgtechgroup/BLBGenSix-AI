@@ -1,40 +1,796 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLBGenSix AI - Uncensored Generative AI Platform</title>
-    <meta name="description" content="Zero-trust passwordless AI generation. Adults only, 18+ verified.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #8B5CF6, #EC4899, #F97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BLBGenSix AI - Universal AI generation, media scraping, and music streaming platform. Generate images, videos, text. Access 802+ scrapers, 28 music sources, 10+ revenue streams.">
+  <meta name="keywords" content="AI generation, media scraping, music streaming, image generation, video generation, text generation, AI platform, BLBGenSix">
+  <meta name="author" content="BLBGenSix AI">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blbgensixai.club">
+  <meta property="og:title" content="BLBGenSix AI - Universal AI Generation Platform">
+  <meta property="og:description" content="AI Generation + Media Scraping + Music Streaming. 802+ scrapers, 28 music sources, 10+ revenue streams. Start free today.">
+  <meta property="og:image" content="https://blbgensixai.club/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="BLBGenSix AI">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://blbgensixai.club">
+  <meta name="twitter:title" content="BLBGenSix AI - Universal AI Generation Platform">
+  <meta name="twitter:description" content="AI Generation + Media Scraping + Music Streaming. 802+ scrapers, 28 music sources, 10+ revenue streams.">
+  <meta name="twitter:image" content="https://blbgensixai.club/og-image.svg">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://blbgensixai.club">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="assets/styles/main.css" as="style">
+  <link rel="preload" href="assets/scripts/main.js" as="script">
+  
+  <title>BLBGenSix AI - Universal AI Generation, Media Scraping & Music Streaming Platform</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles/main.css">
+  
+  <!-- Inline SVG icon sprite -->
+  <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
 </head>
-<body class="bg-[#0F0F0F] text-gray-100">
-    <nav class="fixed top-0 w-full z-50 bg-[#0F0F0F]/80 backdrop-blur-xl border-b border-[#333]">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-2xl font-bold gradient-text">BLBGenSix AI</a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="#features" class="text-gray-400 hover:text-white transition">Features</a>
-                <a href="#revenue" class="text-gray-400 hover:text-white transition">Revenue</a>
-                <a href="#security" class="text-gray-400 hover:text-white transition">Security</a>
-                <a href="#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
-            </div>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Icon sprite (hidden) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/>
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 2v20M2 7l20 10M22 7L2 17"/>
+    </symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="M21 15l-5-5L5 21"/>
+    </symbol>
+    <symbol id="icon-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="4" width="15" height="16" rx="2"/>
+      <path d="M22 8l-5 4v6l5 4V8z"/>
+    </symbol>
+    <symbol id="icon-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+    </symbol>
+    <symbol id="icon-scraper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+      <path d="M8 2L12 6L8 10M16 14L12 18L16 22"/>
+    </symbol>
+    <symbol id="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </symbol>
+    <symbol id="icon-revenue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="12" y1="1" x2="12" y2="23"/>
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"/>
+    </symbol>
+    <symbol id="icon-twitter" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+    </symbol>
+    <symbol id="icon-discord" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 0-.104.009c-.058.05-.115.108-.172.168-.066.103-.138.212-.213.325a.055.055 0 0 1-.03.056c-.006.006-.009.009-.009.009l.003.003a.12.12 0 0 0 .057.072c.153.081.31.162.468.241a.058.058 0 0 0 .068-.013c.19-.138.4-.267.62-.385a.062.062 0 0 1 .068-.002c.18.07.36.14.53.21a.058.058 0 0 1 .048.07c-.01.16-.02.31-.02.47 0 .18.01.35.02.52a.058.058 0 0 1-.048.07c-.17.07-.35.14-.53.21a.062.062 0 0 1-.068.002 13.63 13.63 0 0 1-2.245-1.366.076.076 0 0 0-.104-.009 10.413 10.413 0 0 1-1.872.892.077.077 0 0 0-.041.106c.36.7.771 1.364 1.225 1.993a.078.078 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028z"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </symbol>
+    <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </symbol>
+    <symbol id="icon-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="12" y1="20" x2="12" y2="10"/>
+      <line x1="18" y1="20" x2="18" y2="4"/>
+      <line x1="6" y1="20" x2="6" y2="16"/>
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </symbol>
+    <symbol id="icon-crypto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </symbol>
+  </svg>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="BLBGenSix AI Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="160" height="48">
+          <defs>
+            <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#00D4AA;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(0, 2)">
+            <path d="M24 4L44 16V40L24 52L4 40V16L24 4Z" fill="url(#navLogoGrad)" />
+            <circle cx="24" cy="28" r="8" fill="none" stroke="white" stroke-width="1.5" />
+            <circle cx="24" cy="28" r="4" fill="white" opacity="0.8" />
+            <path d="M21 25L27 25L27 31L21 31Z" fill="white" opacity="0.6" />
+          </g>
+          <text x="52" y="38" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#ffffff">BLBGenSix</text>
+          <text x="52" y="52" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#00D4AA">AI PLATFORM</text>
+        </svg>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="#features" role="menuitem">Features</a></li>
+        <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
+        <li role="none"><a href="#testimonials" role="menuitem">Testimonials</a></li>
+        <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
+      </ul>
+      <a href="#pricing" class="btn btn-primary nav-cta">Get Started</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            Now in Public Beta
+          </div>
+          <h1>
+            The Future of<br>
+            <span class="gradient-text">AI Generation & Streaming</span>
+          </h1>
+          <p class="hero-subtitle">
+            Universal AI generation, media scraping, and music streaming platform. 
+            Generate images, videos, and text. Access 802+ scrapers, 28 music sources, and 10+ revenue streams.
+          </p>
+          <div class="hero-buttons">
+            <a href="#pricing" class="btn btn-primary">
+              Start Free Trial
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
         </div>
-    </nav>
-    <main class="pt-24">
-        <section class="max-w-7xl mx-auto px-6 py-32 text-center">
-            <div class="inline-block px-4 py-1 bg-violet-500/10 border border-violet-500/30 rounded-full text-violet-400 text-sm mb-8">Zero-Trust Passwordless | Cold Wallet Only | 18+ Verified</div>
-            <h1 class="text-6xl md:text-8xl font-black mb-6"><span class="gradient-text">Uncensored AI</span><br>Generation Platform</h1>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">Generate images, videos, novels, and 3D body models. 10+ revenue streams. Multi-chain crypto payments. No passwords.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#pricing" class="px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl transition-all">Start Free Trial</a>
+      </div>
+    </section>
+
+    <!-- Live Stats -->
+    <section class="stats" aria-label="Platform statistics">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item animate-on-scroll">
+            <span class="stat-number" data-count="802" data-suffix="+">0</span>
+            <div class="stat-label">Active Scrapers</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <span class="stat-number" data-count="22" data-suffix="+">0</span>
+            <div class="stat-label">Integrations</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <span class="stat-number" data-count="28" data-suffix="">0</span>
+            <div class="stat-label">Music Sources</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <span class="stat-number" data-count="10" data-suffix="+">0</span>
+            <div class="stat-label">Revenue Streams</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <span class="stat-number" data-count="7" data-suffix="">0</span>
+            <div class="stat-label">Crypto Networks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section" aria-label="Features">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">Core Features</span>
+          <h2 class="section-title">Everything You Need to Create & Stream</h2>
+          <p class="section-subtitle">
+            Powerful AI tools combined with universal media access and monetization
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- AI Generation -->
+          <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v20M2 7l20 10M22 7L2 17"/>
+              </svg>
             </div>
-        </section>
-        <footer class="border-t border-[#333] py-12 text-center text-gray-500 text-sm">2026 BLBGenSix AI - blbgensixai.club - Adults Only, 18+</footer>
-    </main>
+            <h3>AI Generation</h3>
+            <p>Generate stunning images, videos, and text content with state-of-the-art AI models.</p>
+            <ul class="feature-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Image Generation (SDXL, DALL-E, Midjourney)
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Video Generation (Runway, Pika, Sora)
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Text Generation (GPT-4, Claude, LLaMA)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Universal Scraping -->
+          <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+                <path d="M8 2L12 6L8 10M16 14L12 18L16 22"/>
+              </svg>
+            </div>
+            <h3>Universal Scraping</h3>
+            <p>Access data from 802+ pre-built scrapers across all major platforms and sources.</p>
+            <ul class="feature-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                802+ Ready-to-Use Scrapers
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom Scraper Builder
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Real-time Data Extraction
+              </li>
+            </ul>
+          </div>
+
+          <!-- Music Streaming -->
+          <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="16" r="3"/>
+              </svg>
+            </div>
+            <h3>Music Streaming</h3>
+            <p>Stream from 28 integrated music sources with unified search and playback.</p>
+            <ul class="feature-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                28 Music Platform Integrations
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Unified Search & Playlists
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                High-Quality Audio Streaming
+              </li>
+            </ul>
+          </div>
+
+          <!-- Revenue Dashboard -->
+          <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Revenue Dashboard</h3>
+            <p>Track earnings across 10+ revenue streams with real-time analytics and insights.</p>
+            <ul class="feature-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                10+ Revenue Stream Tracking
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Real-time Analytics
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                7 Crypto Network Support
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section" aria-label="Pricing">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">Pricing</span>
+          <h2 class="section-title">Simple, Transparent Pricing</h2>
+          <p class="section-subtitle">
+            Start free and scale as you grow. No hidden fees, cancel anytime.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Free -->
+          <div class="pricing-card animate-on-scroll">
+            <div class="pricing-header">
+              <div class="pricing-name">Free</div>
+              <div class="pricing-price">
+                <span class="currency">$</span>0
+                <span class="period">/month</span>
+              </div>
+              <p class="pricing-desc">Perfect for trying out the platform</p>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                10 AI generations/month
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                5 scraper runs/day
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                1 music source
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Basic analytics
+              </li>
+            </ul>
+            <a href="#" class="btn btn-secondary">Get Started Free</a>
+          </div>
+
+          <!-- Starter -->
+          <div class="pricing-card animate-on-scroll">
+            <div class="pricing-header">
+              <div class="pricing-name">Starter</div>
+              <div class="pricing-price">
+                <span class="currency">$</span>9
+                <span class="period">/month</span>
+              </div>
+              <p class="pricing-desc">For individuals and creators</p>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                100 AI generations/month
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                50 scraper runs/day
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                10 music sources
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Advanced analytics
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Email support
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary">Choose Starter</a>
+          </div>
+
+          <!-- Professional -->
+          <div class="pricing-card featured animate-on-scroll">
+            <div class="pricing-header">
+              <div class="pricing-name">Professional</div>
+              <div class="pricing-price">
+                <span class="currency">$</span>29
+                <span class="period">/month</span>
+              </div>
+              <p class="pricing-desc">For teams and businesses</p>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited AI generations
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited scraper runs
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                All 28 music sources
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Full revenue dashboard
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Priority support
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                API access
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary">Choose Professional</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card animate-on-scroll">
+            <div class="pricing-header">
+              <div class="pricing-name">Enterprise</div>
+              <div class="pricing-price">
+                <span class="currency">$</span>99
+                <span class="period">/month</span>
+              </div>
+              <p class="pricing-desc">For large organizations</p>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Everything in Professional
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom AI model training
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                White-label solution
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Dedicated account manager
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                99.9% SLA guarantee
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom integrations
+              </li>
+            </ul>
+            <a href="#" class="btn btn-secondary">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section" aria-label="Testimonials">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">Loved by Creators Worldwide</h2>
+          <p class="section-subtitle">
+            See what our users have to say about BLBGenSix AI
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "BLBGenSix AI transformed our content creation workflow. The AI generation quality is outstanding, and having 802+ scrapers at our fingertips is a game-changer."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SM</div>
+              <div>
+                <div class="testimonial-name">Sarah Mitchell</div>
+                <div class="testimonial-role">Creative Director, TechFlow</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "The music streaming integration is seamless. Having 28 sources in one platform saved us thousands in licensing costs. The revenue dashboard is incredibly detailed."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">JR</div>
+              <div>
+                <div class="testimonial-name">James Rodriguez</div>
+                <div class="testimonial-role">Founder, StreamLine Media</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "We switched from three different tools to BLBGenSix. The scraping capabilities alone are worth the price. 802 scrapers and counting - it's incredible."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AK</div>
+              <div>
+                <div class="testimonial-name">Aisha Khan</div>
+                <div class="testimonial-role">Data Scientist, InsightLab</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Can't find what you're looking for? Reach out to our support team.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              What is BLBGenSix AI?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-1" role="region">
+              <div class="faq-answer-inner">
+                BLBGenSix AI is a universal platform combining AI generation, media scraping, and music streaming. Generate images, videos, and text with AI, access 802+ web scrapers, stream from 28 music sources, and track revenue across 10+ streams.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              How does the free plan work?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-2" role="region">
+              <div class="faq-answer-inner">
+                The free plan gives you 10 AI generations per month, 5 scraper runs per day, access to 1 music source, and basic analytics. No credit card required. You can upgrade anytime to unlock more features.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              What AI models are supported for generation?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-3" role="region">
+              <div class="faq-answer-inner">
+                We support all major AI models including SDXL, DALL-E 3, Midjourney for images; Runway, Pika, Sora for videos; and GPT-4, Claude, LLaMA for text generation. Professional and Enterprise plans get access to all models.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              Can I build custom scrapers?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-4" role="region">
+              <div class="faq-answer-inner">
+                Yes! Our platform includes a custom scraper builder. You can create scrapers for any website, configure extraction rules, and schedule automated runs. We also provide 802+ pre-built scrapers for popular platforms.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              Which music sources are integrated?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-5" role="region">
+              <div class="faq-answer-inner">
+                We integrate with 28 music sources including Spotify, Apple Music, YouTube Music, SoundCloud, Tidal, Deezer, Amazon Music, and many more. Professional plan gives access to all sources with unified search and playlists.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+              How does the revenue dashboard work?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-6" role="region">
+              <div class="faq-answer-inner">
+                The revenue dashboard tracks earnings from 10+ streams including API usage, affiliate commissions, music streaming royalties, and crypto payments across 7 networks. Get real-time analytics, export reports, and automate payouts.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+              Is there an API available?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-7" role="region">
+              <div class="faq-answer-inner">
+                Yes, API access is available on Professional and Enterprise plans. Our REST API allows you to integrate AI generation, scraping, and music streaming into your own applications. Comprehensive documentation and SDKs are provided.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+              Can I cancel my subscription anytime?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-8" role="region">
+              <div class="faq-answer-inner">
+                Absolutely. You can cancel your subscription at any time with no penalties. Your account will remain active until the end of the billing period, and you can export all your data before cancellation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" aria-label="BLBGenSix AI Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="160" height="48">
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#00D4AA;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <g transform="translate(0, 2)">
+                <path d="M24 4L44 16V40L24 52L4 40V16L24 4Z" fill="url(#footerLogoGrad)" />
+                <circle cx="24" cy="28" r="8" fill="none" stroke="white" stroke-width="1.5" />
+                <circle cx="24" cy="28" r="4" fill="white" opacity="0.8" />
+                <path d="M21 25L27 25L27 31L21 31Z" fill="white" opacity="0.6" />
+              </g>
+              <text x="52" y="38" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#ffffff">BLBGenSix</text>
+              <text x="52" y="52" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#00D4AA">AI PLATFORM</text>
+            </svg>
+          </a>
+          <p>Universal AI generation, media scraping, and music streaming platform. Empowering creators with cutting-edge technology.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" aria-label="Discord">
+              <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 0-.104.009c-.058.05-.115.108-.172.168-.066.103-.138.212-.213.325a.055.055 0 0 1-.03.056c-.006.006-.009.009-.009.009l.003.003a.12.12 0 0 0 .057.072c.153.081.31.162.468.241a.058.058 0 0 0 .068-.013c.19-.138.4-.267.62-.385a.062.062 0 0 1 .068-.002c.18.07.36.14.53.21a.058.058 0 0 1 .048.07c-.01.16-.02.31-.02.47 0 .18.01.35.02.52a.058.058 0 0 1-.048.07c-.17.07-.35.14-.53.21a.062.062 0 0 1-.068.002 13.63 13.63 0 0 1-2.245-1.366.076.076 0 0 0-.104-.009 10.413 10.413 0 0 1-1.872.892.077.077 0 0 0-.041.106c.36.7.771 1.364 1.225 1.993a.078.078 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Kit</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">GDPR Compliance</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLBGenSix AI. All rights reserved.</p>
+        <p>
+          <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Cookies</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/scripts/main.js" defer></script>
 </body>
 </html>
